@@ -3,7 +3,7 @@
   'use strict';
 
   function debug(str) {
-    console.log("CJC CLIENT -*- -->" + str);
+    console.log("CJC -*- -->" + str);
   }
 
   var _evtSectionEntries = document.getElementById('events-entries');
@@ -20,20 +20,20 @@
 
   var ClientConnect = function() {
     var self = this;
-    debug('Vamos a lanzar conexion');
+    debug('CLIENT Vamos a lanzar conexion');
     navigator.connect(URL_CONNECT).then(
       function(port) {
         self.port = port;
 
         port.onmessage = function(evt) {
           // Handle reply from the service.
-          debug('msg received --> ' + JSON.stringify(evt.data));
+          debug('CLIENT msg received --> ' + JSON.stringify(evt.data));
           _addTxt(evt.data ? JSON.stringify(evt.data): "no datas");
         };
 
         for (var i = 0; i < 1 /*NUM_MSG*/; i++) {
-          debug('Send msg ' + i);
-          port.postMessage({'type': 'reply', 'payload': 'bar' + i});
+          debug('CLIENT Send msg ' + i);
+          port.postMessage({'origin': 'client', 'secuence': i});
         }
     });
   };
