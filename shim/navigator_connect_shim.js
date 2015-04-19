@@ -44,7 +44,11 @@
             debug('SHIM CLIENT Establecida comunicacion IAC');
             if (ports && ports.length > 0) {
               var shimPort = new Port(ports[0]);
-              //resolve(shimPort);
+              // At this point we have transport. Since IAC doesn't tell the receiver
+              // the URL of the page that's connecting (which is strange, TO-DO check that)
+              // We have to pass that data. This is unsecure as hell...
+              shimPort.postMessage({originURL: document.location.href});
+
               shimPort.onmessage = function(evt) {
                 debug("SHIM ClIENT - Got the accept response: evt.data: " + JSON.stringify(evt.data));
                 shimPort.onmessage = null;
