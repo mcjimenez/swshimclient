@@ -32,7 +32,7 @@
           _addTxt(evt.data ? JSON.stringify(evt.data): "no datas");
         };
 
-        for (var i = 0; i < 1 /*NUM_MSG*/; i++) {
+        for (var i = 0; i < NUM_MSG; i++) {
           debug('CLIENT Send msg ' + i);
           port.postMessage({'origin': 'client', 'secuence': i});
         }
