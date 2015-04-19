@@ -12,7 +12,7 @@
 
 
   function changeSelect(evt) {
-    client.postMessage({ icon : _select.options[_select.selectedIndex].value });
+    //client.postMessage({ icon : _select.options[_select.selectedIndex].value });
     debug("_select.selectedIndex:"+_select.selectedIndex);
     debug("selected:"+_select.options[_select.selectedIndex].value);
     _putImg({src:_select.options[_select.selectedIndex].value});
@@ -56,10 +56,10 @@
           _addTxt(evt.data ? JSON.stringify(evt.data): "no datas");
         };
 
-        //for (var i = 0; i < NUM_MSG; i++) {
-        //  debug('CLIENT Send msg ' + i);
-        //  port.postMessage({'origin': 'client', 'secuence': i});
-        //}
+        for (var i = 0; i < NUM_MSG; i++) {
+          debug('CLIENT Send msg ' + i);
+          port.postMessage({'origin': 'client', 'secuence': i});
+        }
     });
   };
 
