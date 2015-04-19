@@ -3,14 +3,15 @@
   'use strict';
 
   function debug(str) {
-    console.log("CJC CLIENT SHIM -*- -->" + str);
+    console.log("CJC -*-:" + str);
   }
 
   //Client side
   function Port(iacPort) {
-    debug('Creando recubrimiento de puertos');
+    debug('SHIM CLIENT Creando recubrimiento de puertos');
     this.iacPort = iacPort;
     this.iacPort.onmessage = e => {
+      debug('SHIM CLIENT : received IAC msg:' + JSON.stringify(e.data));
       this.onmessage && this.onmessage(e);
     };
     this.iacPort.start();
@@ -18,7 +19,7 @@
 
   Port.prototype = {
     postMessage: function postMessage(msg) {
-      debug('Sending a message');
+      debug('SHIM CLIENT Sending a message by IAC');
       this.iacPort && this.iacPort.postMessage(msg);
     },
 
@@ -40,12 +41,12 @@
         }
         app.connect(where).then(
           ports => {
-            debug('Establecida comunicacion IAC');
+            debug('SHIM CLIENT Establecida comunicacion IAC');
             if (ports && ports.length > 0) {
               var shimPort = new Port(ports[0]);
               //resolve(shimPort);
               shimPort.onmessage = function(evt) {
-                debug("CJC - SHIM ClIENT - Got the accept response: evt.data: " + JSON.stringify(evt.data));
+                debug("SHIM ClIENT - Got the accept response: evt.data: " + JSON.stringify(evt.data));
                 shimPort.onmessage = null;
                 evt.data.accepted && resolve(shimPort) || reject();
               };
@@ -58,13 +59,13 @@
       };
 
       request.onerror = domReq => {
-        debug('CJC error retrieved self' + JSON.stringify(domReq.error));
+        debug('SHIM CLIENT error retrieved self' + JSON.stringify(domReq.error));
         reject(domReq.error);
       };
     });
   };
 
-  debug('CJC !!!! navigatorConnect se ejecuta!!!');
+  debug('SHIM CLIENT  navigatorConnect se ejecuta!!!');
   exports.navigator.connect = !exports.navigator.connect && connectShim || undefined;
 
 })(window);

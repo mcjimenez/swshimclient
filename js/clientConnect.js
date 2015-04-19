@@ -3,7 +3,7 @@
   'use strict';
 
   function debug(str) {
-    console.log("CJC -*- -->" + str);
+    console.log("CJC -*-:" + str);
   }
 
   var _evtSectionEntries = document.getElementById('events-entries');
