@@ -24,6 +24,7 @@
     navigator.connect(URL_CONNECT).then(
       function(port) {
         self.port = port;
+        _addTxt("navigator.connect success. Adding listener!");
 
         port.onmessage = function(evt) {
           // Handle reply from the service.

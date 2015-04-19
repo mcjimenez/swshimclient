@@ -45,6 +45,7 @@
               var shimPort = new Port(ports[0]);
               //resolve(shimPort);
               shimPort.onmessage = function(evt) {
+                debug("CJC - SHIM ClIENT - Got the accept response: evt.data: " + JSON.stringify(evt.data));
                 shimPort.onmessage = null;
                 evt.data.accepted && resolve(shimPort) || reject();
               };
