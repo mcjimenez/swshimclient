@@ -12,7 +12,7 @@
 
 
   function changeSelect(evt) {
-    //client.postMessage({ icon : _select.options[_select.selectedIndex].value });
+    client.postMessage({ icon : _select.options[_select.selectedIndex].value });
     debug("_select.selectedIndex:"+_select.selectedIndex);
     debug("selected:"+_select.options[_select.selectedIndex].value);
     _putImg({src:_select.options[_select.selectedIndex].value});
@@ -46,7 +46,7 @@
     var self = this;
     debug('CLIENT Vamos a lanzar conexion');
     navigator.connect(URL_CONNECT).then(
-      function(port) {
+      port => {
         self.port = port;
         _addTxt("navigator.connect success. Adding listener!");
 
