@@ -68,7 +68,9 @@
 
   ClientConnect.prototype = {
     postMessage: function pm(msg) {
-      console.log('CLIENT this:' + JSON.stringify(this));
+      for (var i in this) {
+        debug('CLIENT this--> ' + i + ':' + JSON.stringify(this[i]));
+      }
       this.port.postMessage(msg);
     }
   };
