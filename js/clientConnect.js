@@ -12,7 +12,7 @@
 
 
   function changeSelect(evt) {
-    client.postMessage({ icon : _select.options[_select.selectedIndex].value });
+    client.postMessage({ appicon : _select.options[_select.selectedIndex].value });
     debug("_select.selectedIndex:"+_select.selectedIndex);
     debug("selected:"+_select.options[_select.selectedIndex].value);
     _putImg({src:_select.options[_select.selectedIndex].value});
