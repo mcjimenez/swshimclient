@@ -49,7 +49,8 @@
     debug('CLIENT Vamos a lanzar conexion');
     navigator.connect(URL_CONNECT).then(
       port => {
-        self.port = port;
+        self.port = this.port = port;
+        //ClientConnect.port = port;
         _addTxt("navigator.connect success. Adding listener!");
 
         port.onmessage = function(evt) {
@@ -67,6 +68,7 @@
 
   ClientConnect.prototype = {
     postMessage: function pm(msg) {
+      console.log('CLIENT this:' + JSON.stringify(this));
       this.port.postMessage(msg);
     }
   };
