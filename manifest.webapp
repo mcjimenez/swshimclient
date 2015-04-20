@@ -3,7 +3,7 @@
   "name": "swshimclient",
   "description": "TEST Client Connect",
   "launch_path": "/swshimclient/index.html",
-  "type": "trusted",
+  "type": "certified",
   "developer": {
     "name": "The Gaia Team",
     "url": "https://github.com/mozilla-b2g/gaia"

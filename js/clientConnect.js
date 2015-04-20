@@ -12,7 +12,9 @@
 
 
   function changeSelect(evt) {
-    client.postMessage({ appicon : _select.options[_select.selectedIndex].value });
+    var msg = { appicon : _select.options[_select.selectedIndex].value };
+    debug('CLIENT sending postMessage:'+ JSON.stringify(msg));
+    client.postMessage(msg);
     debug("_select.selectedIndex:"+_select.selectedIndex);
     debug("selected:"+_select.options[_select.selectedIndex].value);
     _putImg({src:_select.options[_select.selectedIndex].value});
@@ -76,6 +78,6 @@
     debug('APP Document loaded! --> registrar handlers de prueba');
     _select.addEventListener('change', changeSelect);
     _select.selectedIndex = 0;
-    _putImg({src:_select.options[_select.selectedIndex].value});
+    //_putImg({src:_select.options[_select.selectedIndex].value});
   });
 })(this);
