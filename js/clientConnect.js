@@ -40,7 +40,7 @@
 
   var TXT_MSG = 'Testing message';
   var URL_CONNECT = 'https://testServiceConnect.hostedweb.tid.es/services';
-  var NUM_MSG = 5;
+  var NUM_MSG = 2;
 
   var ClientConnect = function() {
     var self = this;
