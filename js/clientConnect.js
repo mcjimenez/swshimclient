@@ -7,7 +7,6 @@
   }
 
   var _evtSectionEntries = document.getElementById('eventsEntries');
-//  var _imgSection = document.getElementById('settingsEntries');
   var _settingsEntries = document.getElementById('settingsEntries');
   var _select = document.getElementById('selectSetting');
   var whatEntry = _evtSectionEntries;
@@ -20,8 +19,6 @@
     _removeChildren(_settingsEntries);
     debug("_select.selectedIndex:"+_select.selectedIndex);
     debug("selected:"+_select.options[_select.selectedIndex].value);
-//    _putImg({src:_select.options[_select.selectedIndex].value});
-    //_putSetting({src:_select.options[_select.selectedIndex].value});
   }
 
   function _removeChildren(aParent) {
@@ -48,10 +45,8 @@
     navigator.connect(URL_CONNECT).then(
       port => {
         self.port = port;
-        debug('CLIENT ' + JSON.stringify(this));
-        debug('CLIENT ' + JSON.stringify(port));
-        //ClientConnect.port = port;
-        _addTxt("navigator.connect success. Adding listener!", _evtSectionEntries);
+        _addTxt("navigator.connect success. Adding listener!",
+                _evtSectionEntries);
 
         port.onmessage = function(evt) {
           // Handle reply from the service.
@@ -68,9 +63,6 @@
 
   ClientConnect.prototype = {
     postMessage: function pm(msg) {
-      for (var i in this) {
-        debug('CLIENT this--> ' + i + ':' + JSON.stringify(this[i]));
-      }
       this.port.postMessage(msg);
     }
   };
@@ -79,9 +71,7 @@
   exports.clientConnect = client;
 
   window.addEventListener('load', function () {
-    debug('APP Document loaded! --> registrar handlers de prueba');
     _select.addEventListener('change', changeSelect);
     _select.selectedIndex = 0;
-    //_putImg({src:_select.options[_select.selectedIndex].value});
   });
 })(this);
