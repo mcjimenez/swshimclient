@@ -14,15 +14,19 @@
 <body>
   <section class="panel">
   <h1>client</h1>
-  <select name="select" id="selectIcon">
+    <h2>Select Setting</h2>
+  <select name="select" id="selectSetting">
     <!--option value="/style/icons/sms.png">SMS</option-->
-    <option value="app://sms.gaiamobile.org/style/icons/sms_126.png">SMS</option>
-    <option value="app://communications.gaiamobile.org/contacts/style/icons/contacts_126.png">Contacts</option>
-    <option value="app://camera.gaiamobile.org/style/icons/camera_126.png">Camera</option>
+    <option value="ril.data.enabled">ril.data.enabled</option>
+    <option value="language.current">language.current</option>
+    <option value="locale.hour12">locale.hour12</option>
   </select>
-  <p> image selected:
-  <section id="imgSection">
-  </section>
+  <p> Setting selected:
+  <div>
+    <ul id="settingsEntries">
+    </ul>
+  </dic>
+  <p>Ctrl msg:
   <div>
     <ul id="eventsEntries">
     </ul>
